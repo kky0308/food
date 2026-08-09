@@ -1,15 +1,15 @@
 # 오늘 뭐 먹지? - 맛집 추천
 
 지역, 방문 날짜/시간, 동반자, 인원수, 음식 종류, 음주 여부를 단계별로 선택하면
-Google 평점(리뷰 수 가중치 적용) 기준으로 맛집을 추천해주는 웹앱입니다.
-결과에는 참고용 카카오맵 링크도 함께 제공됩니다. (카카오 공식 API는 별점을 제공하지 않아
-평점 자체는 Google 평점만 사용합니다.)
+Kakao 로컬 API 검색 결과(관련도순)로 맛집을 추천해주는 웹앱입니다.
+카카오 공식 API는 별점을 제공하지 않아 평점 표시는 없고,
+카테고리/주소/전화번호와 카카오맵 링크를 보여줍니다.
 
 ## 기술 스택
 
 - Backend: FastAPI (Python)
 - Frontend: Vanilla HTML/CSS/JS (단계별 마법사 UI)
-- 외부 API: Google Places API (New) - Text Search, Kakao Local API (지도 링크용)
+- 외부 API: Kakao Local API (키워드 장소 검색)
 
 ## 로컬 실행
 
@@ -23,8 +23,6 @@ uvicorn main:app --reload
 
 ### API 키 발급
 
-- **Google Places API**: Google Cloud Console에서 프로젝트 생성 → Places API (New) 활성화 →
-  사용자 인증 정보에서 API 키 발급. (`GOOGLE_PLACES_API_KEY`)
 - **Kakao REST API**: developers.kakao.com 가입 → 애플리케이션 추가 → REST API 키 확인.
   (`KAKAO_REST_API_KEY`, 무료, 카드 등록 불필요)
 

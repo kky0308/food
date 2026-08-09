@@ -220,32 +220,10 @@ main#wizard {
   color: var(--text);
 }
 
-.result-card .rating .stars {
-  color: #f5a623;
-}
-
 .result-card .address {
   margin-top: 4px;
   font-size: 13px;
   color: var(--text-muted);
-}
-
-.result-card .open-badge {
-  display: inline-block;
-  margin-top: 6px;
-  font-size: 12px;
-  padding: 2px 8px;
-  border-radius: 999px;
-}
-
-.open-badge.open {
-  background: #e3f6e8;
-  color: #1f9d55;
-}
-
-.open-badge.closed {
-  background: #fbe4e4;
-  color: #c53030;
 }
 
 .result-card a {

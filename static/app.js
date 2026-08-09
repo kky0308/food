@@ -151,11 +151,6 @@ btnRestart.addEventListener("click", () => {
   showStep();
 });
 
-function starString(rating) {
-  const full = Math.round(rating);
-  return "★".repeat(full) + "☆".repeat(5 - full);
-}
-
 async function fetchRecommendations() {
   const resultList = document.getElementById("result-list");
   const resultSummary = document.getElementById("result-summary");
@@ -186,7 +181,7 @@ function renderResults(data) {
   const resultList = document.getElementById("result-list");
   const resultSummary = document.getElementById("result-summary");
 
-  resultSummary.textContent = `${state.region} · ${state.food_type} · ${data.count}곳 (Google 평점 기준 정렬)`;
+  resultSummary.textContent = `${state.region} · ${state.food_type} · ${data.count}곳 (카카오맵 검색 결과)`;
 
   if (!data.results.length) {
     resultList.innerHTML = `<div class="empty-state">조건에 맞는 맛집을 찾지 못했어요. 지역이나 음식 종류를 바꿔보세요.</div>`;
@@ -196,24 +191,14 @@ function renderResults(data) {
   resultList.innerHTML = data.results
     .slice(0, 10)
     .map((r, i) => {
-      let openBadge = "";
-      if (r.is_open_at_visit === true) {
-        openBadge = `<span class="open-badge open">방문 시간에 영업중</span>`;
-      } else if (r.is_open_at_visit === false) {
-        openBadge = `<span class="open-badge closed">방문 시간에 영업종료 추정</span>`;
-      }
       return `
         <div class="result-card">
           <div class="name"><span class="rank">${i + 1}</span>${r.name}</div>
-          <div class="rating">
-            <span class="stars">${starString(r.rating)}</span>
-            ${r.rating.toFixed(1)} (구글 리뷰 ${r.user_rating_count}개)
-          </div>
+          <div class="rating">${r.category || ""}</div>
           <div class="address">${r.address}</div>
-          ${openBadge}
+          ${r.phone ? `<div class="address">${r.phone}</div>` : ""}
           <br/>
-          <a href="${r.google_maps_uri}" target="_blank" rel="noopener">구글 지도에서 보기 →</a>
-          ${r.kakao_place_url ? `<br/><a href="${r.kakao_place_url}" target="_blank" rel="noopener">카카오맵에서 보기 →</a>` : ""}
+          ${r.kakao_place_url ? `<a href="${r.kakao_place_url}" target="_blank" rel="noopener">카카오맵에서 보기 →</a>` : ""}
         </div>
       `;
     })
