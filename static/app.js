@@ -48,7 +48,7 @@ function showStep() {
   });
   updateProgress();
 
-  btnBack.classList.toggle("hidden", currentIndex === 0 || steps[currentIndex] === "result");
+  btnBack.classList.toggle("hidden", currentIndex === 0);
   btnNext.classList.toggle("hidden", steps[currentIndex] === "result");
   btnRestart.classList.toggle("hidden", steps[currentIndex] !== "result");
 
