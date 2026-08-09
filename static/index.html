@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>오늘 뭐 먹지? - 맛집 추천</title>
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<div class="app">
+  <header class="app-header">
+    <h1>오늘 뭐 먹지?</h1>
+    <div class="progress" id="progress"></div>
+  </header>
+
+  <main id="wizard">
+
+    <section class="step" data-step="1">
+      <h2>어디에서 드실 건가요?</h2>
+      <input type="text" id="region-input" placeholder="예: 강남역, 홍대, 성수동" />
+      <div class="chips" id="region-chips">
+        <button class="chip" data-value="강남역">강남역</button>
+        <button class="chip" data-value="홍대">홍대</button>
+        <button class="chip" data-value="이태원">이태원</button>
+        <button class="chip" data-value="성수동">성수동</button>
+        <button class="chip" data-value="잠실">잠실</button>
+        <button class="chip" data-value="여의도">여의도</button>
+      </div>
+    </section>
+
+    <section class="step" data-step="2">
+      <h2>언제 방문하시나요?</h2>
+      <div class="field-row">
+        <label>날짜<input type="date" id="visit-date" /></label>
+        <label>시간<input type="time" id="visit-time" value="19:00" /></label>
+      </div>
+    </section>
+
+    <section class="step" data-step="3">
+      <h2>누구와 함께 하시나요?</h2>
+      <div class="option-cards" id="companion-options">
+        <button class="option-card" data-value="애인">💑<span>애인</span></button>
+        <button class="option-card" data-value="친구">👯<span>친구</span></button>
+      </div>
+    </section>
+
+    <section class="step" data-step="4">
+      <h2>몇 명이서 가시나요?</h2>
+      <div class="counter">
+        <button id="headcount-minus" type="button">−</button>
+        <span id="headcount-value">2</span>
+        <button id="headcount-plus" type="button">+</button>
+      </div>
+    </section>
+
+    <section class="step" data-step="5">
+      <h2>어떤 음식이 당기시나요?</h2>
+      <div class="option-cards" id="food-options">
+        <button class="option-card" data-value="한식">🍚<span>한식</span></button>
+        <button class="option-card" data-value="중식">🥟<span>중식</span></button>
+        <button class="option-card" data-value="일식">🍣<span>일식</span></button>
+        <button class="option-card" data-value="양식">🍝<span>양식</span></button>
+        <button class="option-card" data-value="고깃집">🥩<span>고깃집</span></button>
+        <button class="option-card" data-value="이자카야">🍢<span>이자카야</span></button>
+        <button class="option-card" data-value="치킨호프">🍗<span>치킨호프</span></button>
+        <button class="option-card" data-value="카페 디저트">☕<span>카페/디저트</span></button>
+        <button class="option-card" data-value="분식">🍢<span>분식</span></button>
+      </div>
+    </section>
+
+    <section class="step" data-step="6">
+      <h2>술 한잔 하실 건가요?</h2>
+      <div class="option-cards" id="drink-options">
+        <button class="option-card" data-value="yes">🍻<span>마실래요</span></button>
+        <button class="option-card" data-value="no">🙅<span>안 마실래요</span></button>
+      </div>
+    </section>
+
+    <section class="step" data-step="result">
+      <h2>추천 맛집</h2>
+      <div id="result-summary" class="result-summary"></div>
+      <div id="result-list" class="result-list"></div>
+    </section>
+
+  </main>
+
+  <footer class="nav-buttons">
+    <button id="btn-back" type="button">이전</button>
+    <button id="btn-next" type="button">다음</button>
+    <button id="btn-restart" type="button" class="hidden">처음부터 다시</button>
+  </footer>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>
