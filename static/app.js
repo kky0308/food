@@ -206,7 +206,7 @@ function renderResults(data) {
           <div class="address">${r.address}</div>
           ${r.phone ? `<div class="address">${r.phone}</div>` : ""}
           <br/>
-          ${r.kakao_place_url ? `<a href="${r.kakao_place_url}" target="_blank" rel="noopener">카카오맵에서 보기 →</a>` : ""}
+          ${r.kakao_place_url ? `<a href="${r.kakao_place_url}" target="_blank" rel="noopener">영업시간 · 휴무일 · 평점 카카오맵에서 확인 →</a>` : ""}
         </div>
       `;
     })
