@@ -189,7 +189,7 @@ function renderResults(data) {
   const resultList = document.getElementById("result-list");
   const resultSummary = document.getElementById("result-summary");
 
-  resultSummary.textContent = `${state.region} · ${state.food_type} · ${data.count}곳 (카카오맵 검색 결과)`;
+  resultSummary.textContent = `${state.region} · ${state.food_type} · TOP ${data.count} (카카오맵 검색 결과)`;
 
   if (!data.results.length) {
     resultList.innerHTML = `<div class="empty-state">조건에 맞는 맛집을 찾지 못했어요. 지역이나 음식 종류를 바꿔보세요.</div>`;
@@ -197,7 +197,7 @@ function renderResults(data) {
   }
 
   resultList.innerHTML = data.results
-    .slice(0, 10)
+    .slice(0, 5)
     .map((r, i) => {
       return `
         <div class="result-card">

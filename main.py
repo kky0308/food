@@ -35,7 +35,8 @@ async def recommend(req: RecommendRequest):
     except KakaoLocalError as e:
         raise HTTPException(status_code=502, detail=str(e))
 
-    return {"query": req.model_dump(), "count": len(results), "results": results}
+    top5 = results[:5]
+    return {"query": req.model_dump(), "count": len(top5), "results": top5}
 
 
 app.mount("/", StaticFiles(directory="static", html=True), name="static")
