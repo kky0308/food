@@ -119,6 +119,14 @@ wireOptionCards(companionOptions, (v) => (state.companion = v));
 wireOptionCards(foodOptions, (v) => (state.food_type = v));
 wireOptionCards(drinkOptions, (v) => (state.drink = v === "yes"));
 
+document.getElementById("food-random").addEventListener("click", () => {
+  const cards = [...foodOptions.children];
+  const pick = cards[Math.floor(Math.random() * cards.length)];
+  cards.forEach((c) => c.classList.toggle("selected", c === pick));
+  state.food_type = pick.dataset.value;
+  btnNext.disabled = !isStepValid();
+});
+
 document.getElementById("headcount-minus").addEventListener("click", () => {
   state.headcount = Math.max(1, state.headcount - 1);
   headcountValue.textContent = state.headcount;
